@@ -1,0 +1,55 @@
+<%- include('header') %>
+        <div class="card-body">
+          
+         <table class="table">
+<thead> <tr>
+    <th scope="col">
+Password Category Name
+    </th>
+    <th scope="col">
+action
+    </th>
+</tr></thead>
+
+<tbody >
+    
+    <% if(record.length>0){ 
+        record.forEach(function(row){ %>
+<form action="/passcat/edit" method="POST">
+
+    <tr>
+        <td>
+          
+            <% if(errors){ %>
+                <input type="text" class="form-control" name="passname" value="<%= row.passcat %>" >
+                <input type="text" class="form-control" name="id" value="<%= row._id %>" hidden >
+                <% }else{ %>
+                    <%= row.passcat %>
+                    <% } %>
+                
+        </td>
+        <td>
+            <% if(errors){ %>
+            <button class="btn btn-xs btn-success" type="submit"><i class="fa fa-edit"></i></button>
+            <% }else{ %>
+            <a href="/passcat/edit" class="btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
+            <% } %>
+            <a href="/passcat/delete/<%= row._id   %>" class="btn btn-xs btn-primary" onclick="return confirm('Are you sure');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </td>
+        
+    </tr>
+</form>
+
+    <% }) } %>
+   
+       
+    
+</tbody>
+
+         </table>
+        </div>    
+    </div>
+    </div>
+  </body>
+</html> 
+
