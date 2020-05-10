@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/dashboard">Home </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,14 +44,18 @@
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Password Details</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Password Details</a>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Password Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                      <a class="dropdown-item" href="/add-new-password">Add Password Details</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/view-password-detail">View Password Details</a>
+                    </div>
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-sm" href="/logout">Log Out</a>
+                <a class="btn btn-sm" href="/logout">Log Out <%= userName %></a>
 
               </form>
             </div>

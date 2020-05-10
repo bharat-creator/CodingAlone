@@ -213,11 +213,13 @@ router.get('/add-new-password', function(req, res, next) {
   var userName=localStorage.getItem('userName')
   viewpasscat.exec((err,data)=>{
     if(err) throw err;
-    res.render('add-new-password', { title: userName,msg:'' ,errors:'',success:'',record:data});
+    res.render('add-new-password', { title: 'add-new-password',msg:'' ,errors:'',success:'',record:data,userName:userName});
 
   })
 });
   router.post('/add-new-password', function(req, res, next) {
+    var userName=localStorage.getItem('userName')
+
     var de1=passdetailModel.findOne({passcat:req.body.pass});
     de1.exec((err,doc)=>{
       if(err) throw err;
@@ -234,7 +236,7 @@ router.get('/add-new-password', function(req, res, next) {
             viewpasscat.exec((err,data)=>{
               if(err) throw err;
             
-            res.render('add-new-password', { title: userName,msg:'' ,errors:'',success:'Successfull Inserted',record:data});
+            res.render('add-new-password', { userName:userName,title: 'add-new-password',msg:'' ,errors:'',success:'Successfull Inserted',record:data});
     
           });
       
@@ -242,21 +244,22 @@ router.get('/add-new-password', function(req, res, next) {
       }else{
         viewpasscat.exec((err,data)=>{
           if(err) throw err;
-        res.render('add-new-password', { title: userName,msg:'' ,errors:'Alredy exist',success:'',record:data});
+        res.render('add-new-password', { userName:userName,title: 'add-new-password', title: userName,msg:'' ,errors:'Alredy exist',success:'',record:data});
         });
       }
 
     });
+  });
     router.get('/view-password-detail', function(req, res, next) {
       var userName=localStorage.getItem('userName')
       viewpassdetail.exec((err,data)=>{
         if(err) throw err;
-        res.render('view-password-detail', { title: userName,msg:'' ,errors:'',success:'',record:data});
+        res.render('view-password-detail', { title: 'view-password-detail',userName:userName ,errors:'',success:'',record:data});
     
-      })
+      });
     });
 
 
-});
+
 
 module.exports = router;
